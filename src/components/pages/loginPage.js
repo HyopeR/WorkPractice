@@ -20,8 +20,8 @@ const exampleUserList = {
 };
 
 const LoginPage = ({navigation}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errorEmail, setErrorMail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
 
