@@ -132,8 +132,8 @@ const LoginPage = ({navigation}) => {
           title="Clear"
           flex
           onPress={() => {
-            setEmail(null);
-            setPassword(null);
+            setEmail('');
+            setPassword('');
           }}
         />
         <CustomButton
