@@ -33,7 +33,7 @@ const UsersPage = ({navigation}) => {
       hasListView
       header={
         <AppBar
-          title={'Users Page'}
+          title={'Users'}
           leftChildren={
             <IconButton
               iconName={'th-list'}

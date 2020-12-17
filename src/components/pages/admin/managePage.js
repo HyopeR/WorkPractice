@@ -10,10 +10,10 @@ const ManagePage = ({navigation}) => {
     <CustomPageBack
       header={
         <AppBar
-          title={'Manage Page'}
+          title={'Manage'}
           leftChildren={
             <IconButton
-              iconName={'arrow-left'}
+              iconName={'th-list'}
               iconColor={'#FFF'}
               iconSize={20}
               onPress={() => navigation.openDrawer()}
@@ -22,7 +22,7 @@ const ManagePage = ({navigation}) => {
         />
       }>
       <Block middle center flex={1}>
-        <CustomText>Other Page</CustomText>
+        <CustomText>Manage Page</CustomText>
       </Block>
     </CustomPageBack>
   );
