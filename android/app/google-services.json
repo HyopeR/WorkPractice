@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "897611515487",
+    "project_id": "workpractise-d4d78",
+    "storage_bucket": "workpractise-d4d78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897611515487:android:636650acc1ca2a87b43dea",
+        "android_client_info": {
+          "package_name": "com.workpractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897611515487-2h7pjrdntit3m4le7dkobpf06qpuiheb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.workpractice",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "897611515487-stp4vc7mg6470hrank790a940rpis0l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZlNgoGh3AMR6nQw1Dzh5z4AeFozqobl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897611515487-stp4vc7mg6470hrank790a940rpis0l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
