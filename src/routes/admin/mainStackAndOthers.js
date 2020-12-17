@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {Alert} from 'react-native';
 
 // Notifications
 import {showNotification} from '../../services/ShowNotification';

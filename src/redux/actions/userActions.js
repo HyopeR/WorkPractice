@@ -104,6 +104,7 @@ export const logIn = (email, password) => {
 // Çıkış işlemi.
 export const logOut = (user) => {
   return async (dispatch) => {
+    await firebase.messaging().deleteToken();
     await firebaseAuth.signOut();
 
     dispatch({
