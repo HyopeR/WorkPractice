@@ -107,6 +107,11 @@ export const logOut = (user) => {
     await firebaseAuth.signOut();
 
     dispatch({
+      type: IS_LOGGED,
+      payload: false,
+    });
+
+    dispatch({
       type: USER_LOGOUT,
     });
 
@@ -134,6 +139,7 @@ export const pushNotification = (user, tokens) => {
 
         dispatch({
           type: IS_LOGGED,
+          payload: true,
         });
       } catch (err) {
         console.log(err.toString());

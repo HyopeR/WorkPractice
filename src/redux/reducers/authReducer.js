@@ -50,7 +50,7 @@ export const authReducer = (state = initialState, action) => {
     case IS_LOGGED:
       return {
         ...state,
-        isLogged: true,
+        isLogged: action.payload,
       };
 
     default:
