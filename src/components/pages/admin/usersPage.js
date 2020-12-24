@@ -15,7 +15,6 @@ const UsersPage = ({navigation}) => {
   const {colors} = useTheme();
 
   useEffect(() => {
-    // LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     dispatch(getAllUsers());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

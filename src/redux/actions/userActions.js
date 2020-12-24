@@ -125,7 +125,7 @@ export const pushNotification = (user, tokens) => {
   return async (dispatch) => {
     if (user.type === 'user') {
       try {
-        const response = await fetch(notificationApi, {
+        await fetch(notificationApi, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-cache',

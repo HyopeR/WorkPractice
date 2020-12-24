@@ -9,7 +9,6 @@ export function navigate(name, params) {
 
 export function replace(name) {
   navigationRef.current?.dispatch(StackActions.replace(name));
-  // navigationRef.current?.navigate(name);
 }
 
 export function goBack() {

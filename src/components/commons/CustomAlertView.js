@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useTheme} from '@react-navigation/native';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {IconButton} from './IconButton';
 
 const CustomAlertView = ({style, children, onPress}) => {

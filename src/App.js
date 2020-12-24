@@ -1,6 +1,6 @@
 // React & Other Components
 import React, {useEffect} from 'react';
-import {AppState, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {Root} from 'native-base';
 
 // Navigations
@@ -19,7 +19,6 @@ import {LightTheme} from './styles/lightTheme';
 import {DarkTheme} from './styles/darkTheme';
 
 // Actions
-import {setOffline, setOnline} from './redux/actions/userActions';
 import {streamAllAdmins} from './redux/actions/usersActions';
 
 const App = () => {

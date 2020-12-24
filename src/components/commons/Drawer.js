@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Switch, View, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, Switch, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {useTheme} from '@react-navigation/native';

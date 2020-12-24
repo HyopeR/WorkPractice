@@ -1,7 +1,6 @@
 import React from 'react';
-import {Footer, FooterTab, Button} from 'native-base';
+import {Footer, FooterTab} from 'native-base';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {useTheme} from '@react-navigation/native';
 
 const TabBar = ({state, descriptors, navigation}) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Left, Body, Right, Title} from 'native-base';
+import {Header, Body, Title} from 'native-base';
 import {useTheme} from '@react-navigation/native';
 import {View} from 'react-native';
 

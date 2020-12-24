@@ -1,8 +1,4 @@
-import {
-  ADMINS_COMPLETED,
-  ADMINS_ERROR,
-  ADMINS_LOADING,
-} from '../actions/usersActions';
+import {ADMINS_COMPLETED, ADMINS_ERROR} from '../actions/usersActions';
 
 const initialState = {
   data: [],

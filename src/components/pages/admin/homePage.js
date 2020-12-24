@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {AppBar} from '../../commons/AppBar';
 import Block from '../../commons/Block';
 import {IconButton} from '../../commons/IconButton';
