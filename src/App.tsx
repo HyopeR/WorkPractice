@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
+import CodePush, {CodePushOptions} from 'react-native-code-push';
 import RNConfig from 'react-native-config';
 
 const App = () => {
@@ -13,4 +14,9 @@ const App = () => {
   );
 };
 
-export default App;
+const options = {
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
+  installMode: CodePush.InstallMode.ON_NEXT_RESTART,
+} as CodePushOptions;
+
+export default CodePush(options)(App);

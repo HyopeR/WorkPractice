@@ -64,6 +64,6 @@ yarn-error.log
 
 # Env
 .env
-.env.staging
-.env.example
+
+# React Native Config (IOS)
 ios/tmp.xcconfig
