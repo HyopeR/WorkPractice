@@ -7,7 +7,11 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "android:pub:stag": "appcenter codepush release-react -a toursandticketsparis/WorkPracticeAndroid -d Staging",
+    "android:pub:prod": "appcenter codepush release-react -a toursandticketsparis/WorkPracticeAndroid -d Production",
+    "ios:pub:stag": "appcenter codepush release-react -a toursandticketsparis/WorkPracticeIos -d Staging",
+    "ips:pub:prod": "appcenter codepush release-react -a toursandticketsparis/WorkPracticeIos -d Production"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.19.0",

@@ -1,17 +1,27 @@
 import {Platform} from 'react-native';
-import CodePush, {CodePushOptions} from 'react-native-code-push';
+import CodePush from 'react-native-code-push';
 import {Subject} from 'rxjs';
 import {Mixin} from 'ts-mixer';
 import {Singleton} from '../../helpers/class';
 import {Env} from '../../helpers/env';
 import {Storage} from '../../helpers/storage';
-import {DeploymentMode, State} from './type';
+import {
+  CodePushOptions,
+  SyncProcessOptions,
+  DeploymentMode,
+  State,
+} from './type';
 
 class CodePushService extends Mixin(Singleton) {
+  SyncStatus = CodePush.SyncStatus;
+  DeploymentStatus = CodePush.DeploymentStatus;
+  InstallMode = CodePush.InstallMode;
+  CheckFrequency = CodePush.CheckFrequency;
+
   subject = new Subject<State>();
 
   #modeStorageKey = 'CodePushMode';
-  #mode: DeploymentMode = 'production';
+  #mode: DeploymentMode;
 
   #keys = {
     production: {
@@ -26,18 +36,32 @@ class CodePushService extends Mixin(Singleton) {
 
   constructor() {
     super();
-    this.initialize();
+    this.#initialize();
   }
 
-  async initialize() {
-    this.#mode = (await Storage.get(this.#modeStorageKey)) || 'production';
+  #initialize = async () => {
+    const mode = (await Storage.get(this.#modeStorageKey)) || 'production';
+    await this.setMode(mode);
+  };
+
+  async sync({
+    syncStatusChangedCallback,
+    downloadProgressCallback,
+    handleBinaryVersionMismatchCallback,
+  }: SyncProcessOptions = {}) {
+    return CodePush.sync(
+      this.options,
+      syncStatusChangedCallback,
+      downloadProgressCallback,
+      handleBinaryVersionMismatchCallback,
+    );
   }
 
   get options() {
     return {
       deploymentKey: this.key,
       checkFrequency: CodePush.CheckFrequency.ON_APP_START,
-      installMode: CodePush.InstallMode.ON_NEXT_RESTART,
+      installMode: CodePush.InstallMode.IMMEDIATE,
     } as CodePushOptions;
   }
 
@@ -53,7 +77,10 @@ class CodePushService extends Mixin(Singleton) {
   }
 
   get key() {
-    return Platform.select(this.#keys[this.mode]) as string;
+    if (this.mode) {
+      return Platform.select(this.#keys[this.mode]) as string;
+    }
+    return undefined;
   }
 
   async setMode(mode: DeploymentMode) {
