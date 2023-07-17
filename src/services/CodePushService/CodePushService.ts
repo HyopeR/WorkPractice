@@ -1,6 +1,6 @@
 import {Platform} from 'react-native';
 import CodePush from 'react-native-code-push';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {Mixin} from 'ts-mixer';
 import {Singleton} from '../../helpers/class';
 import {Env} from '../../helpers/env';
@@ -17,8 +17,19 @@ class CodePushService extends Mixin(Singleton) {
   DeploymentStatus = CodePush.DeploymentStatus;
   InstallMode = CodePush.InstallMode;
   CheckFrequency = CodePush.CheckFrequency;
+  getUpdateMetadata = CodePush.getUpdateMetadata;
+  checkForUpdate = CodePush.checkForUpdate;
+  allowRestart = CodePush.allowRestart;
+  disallowRestart = CodePush.disallowRestart;
+  restartApp = CodePush.restartApp;
+  clearUpdates = CodePush.clearUpdates;
+  notifyAppReady = CodePush.notifyAppReady;
 
   subject = new Subject<State>();
+
+  ready = new BehaviorSubject<boolean>(false);
+  error = new BehaviorSubject<Error | undefined>(undefined);
+  status = new BehaviorSubject<number>(-1);
 
   #modeStorageKey = 'CodePushMode';
   #mode: DeploymentMode;
@@ -44,6 +55,16 @@ class CodePushService extends Mixin(Singleton) {
     await this.setMode(mode);
   };
 
+  async syncAuto(dev = false) {
+    this.ready.next(false);
+
+    if (dev) {
+      return this.#syncDevelopment();
+    } else {
+      return this.#syncProduction();
+    }
+  }
+
   async sync({
     syncStatusChangedCallback,
     downloadProgressCallback,
@@ -57,11 +78,26 @@ class CodePushService extends Mixin(Singleton) {
     );
   }
 
+  #syncDevelopment = async () => {
+    this.status.next(this.SyncStatus.UP_TO_DATE);
+  };
+
+  #syncProduction = async () => {
+    const [error] = await this.sync({
+      syncStatusChangedCallback: s => this.status.next(s),
+    }).toPromiseArray();
+
+    if (error) {
+      this.error.next(error);
+    }
+  };
+
   get options() {
     return {
       deploymentKey: this.key,
       checkFrequency: CodePush.CheckFrequency.ON_APP_START,
       installMode: CodePush.InstallMode.IMMEDIATE,
+      mandatoryInstallMode: CodePush.InstallMode.IMMEDIATE,
     } as CodePushOptions;
   }
 
